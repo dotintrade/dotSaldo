@@ -8,13 +8,17 @@ https://www.youtube.com/watch?v=Z4yeRyf8MhM
 ****************
 digitalocean.com
 ****************
+
 ssh-keygen -t rsa -b 4096 -C "dotintrade@gmail.com"
-ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDNxYJwUAp8PWnqOWy2Q4ekjm047kMW1ZUhn84hsIPMyei3OTTcKhd4R4rvODCom3uA+i7f8/P35Wm5Q/RJixxSRBt7gRfxs9M7BkxI/GqX+vhryD3RHLcJxJ53AUqianCS8swUuz6Q/cLUZCM3La9pJdijAV1fcziQu6Ja7v1dVbNIJsA4nocsZcnmVssdTXYHj2tTBufcqyWp1KDFiVYhPUKnHmnhgAkG/Z/A0arM8iVCH9pUY6xMLskS5W7s2+6Og9YfOoxx96CO+FeEXYE8RlMhz8CxZxDtTxDOgwC1QtuF05uyi7+XTmWf0oyLIjPM4WNyU+mNsHv/jZksMyeD5Ei+akj8OckpmX+WNX6zz7OByqZZd8uWuLdwNTv8uDVwHPUjmy80DfJ+/BYtpZv/+5PL0HeP+KXclbW9Dqn2AhCWtaLvS96UinjTeNbjViRJIA4oBADuvEamW7wdk1sNtHwO61n9IjQ8ePZUBXrK7cviK7H9++WK4hwcoz8mfBixa4hasEfvXXUtoH7sBpdfZ2FFFoW92AoSPrrLnH2HWMw21MIcCO4nwFkOepwub7cI48Uh/GactMUkxKlEoESdxN1hSTTQNgCtP62dIHSINdXLFzJPD60Yg2gXsKaKBaUA4VUm0QI1YhHWMwR0f96xwBdLNaUaRmYZxzhSBOTv+Q== dotintrade@gmail.com
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDHICCTL/8Sl+/7h/sSkAkCcx5ALay+8Aw6VJL5ULARye5Kj8R3g/tsJVTq6okt7WpWYmMTywwsS4AlxBgyU9MpuAMqgQPcU6hU+HJqD72u4xCu/B9Zv445Hme+IRsggGN82Gi0mXUjUS+bpy8jpczKd9dV3Ua9qu5y2yaclz2jUxyQyaRuRIKKMvZlvpvx8n3lDmDY7SI98/9VB3tnA0meGh4HSRBk4SnbHLqA9wWGwwe9IA+H3fgopHdBNVHzB2iw35RfuWo8H9xzZoQ3XZf49EFO7KFUsOiipkTK/ehsCc5SCoUK7aFkXZpjQ+8t/QebIMOoa8M+oR3CXE++2759hGueJ2oYQV3KgrWEmg026Xl5hwjFBGxX7dyoT0AzkE/WhWoYULBKD+j7aCEBZVcF3s7wOSwfQ8mvyy+PzLQ4YMoiwbt3PcUQrdXIR2gYvqvOcblyhwKbDSBvEajIU1/2/wD39c/SRCi35ZCph03/D6Ft4bPHofrhUsakgL9sVnHB3pA1jlgDWeLWqxun6d/KbFhZpeT25W0HfIkPnvFzks2y4pAEn+j2nLJIZbYo1q/TXTeItucgGY04Jr+DWHCVg/pt2+u8JG0TaCaPPkUHUGvXqht/krDUkPDd3VnKLXtLk2E4xrxhagMVfjRqMej73fZ+DI3sdhaZuY579dNlGw== dotintrade@gmail.com
+
+****************
+22.04 (LTS) x64
 ****************
 cd C:\Datos\Trabajo\Crypto\Python\dotSaldo
 
 De las dos claves que he generado, la PUBlica esla que se sube a digitalocean la otra es la que hay que usar:
-ssh -i "dotintrade" root@206.81.25.147
+ssh -i "dotintrade" root@206.189.56.163
 ****************
 sudo apt upgrade
 
@@ -30,7 +34,7 @@ ufw enable
 ****************
 rsync --archive --chown=dotintrade:dotintrade ~/.ssh /home/dotintrade
 ****************
-ssh -i "dotintrade" dotintrade@206.81.25.147
+ssh -i "dotintrade" dotintrade@206.189.56.163
 
 pwd --> compruebo que estoy en el home del usuario dotintrade	
 ***************
@@ -41,6 +45,8 @@ sudo apt update && sudo apt install git -y
 
 Creo unas claves nuevas en el servidor:
 
+cd ./ssh
+
 ssh-keygen -t rsa -b 4096 -C "dotingrade@gmail.com"
 
 las claves se encuentran en: /home/dotintrade/.ssh/
@@ -48,7 +54,7 @@ las claves se encuentran en: /home/dotintrade/.ssh/
 cat ~/.ssh/id_rsa.pub
 
 copio todo lo anterior al portapapeles
-ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDZ7a/NNBwFSQd5sPaaOk6hFHTnWnIr/pHhh7xYRFbAKfrHjqmmgeegHLM2xoKAz7fRDtDBHRDhwlz6rQ0RQWgVd9x7huPoKiaVdUr/BZTgV8fY6vVAsISaq+Sts5KjcHHv7ERXGgRK4RzRSZCo1lTsQwF6cNvYqDIWRzAOwAskroDSsMd1t7eDPzt8+UVp3JtlSAcswMFFSLKax6Y5Gh7+kX0kl8vm1kyFXmxPldFhTv1ODZmDOmmrmI70sBSmc1j2JSue/9IQtqw8g1hbTUf3WQHeSbUTDQ2HQWzXFyb/M6xKJLqSk3y4O7RA/OyPKfclYsJm01WAsQU2i+oLqDLmSKgftRK/25asx3F81pbsze4zOi360wkCxQoiT2ghh/S1ym1XJcLYcjZAlBdDjyQlY3V/Rz/2Nu1sdxkSKkO19sLX6AWhAyYroTcflHt3rNJSwPDxwjwWt7DSlxEZjj2tv4q/V6pY/opMNyAKr9bzPG4tkGLa8tE6uiCXe68gq0PhGO9PZcyISZBHika9RYYzbTs6vM+sLCwMPnSZydG3GA698na4bUwjfWTCQJ0OrP44VVLBWeukt+6vR9qxwY5Hu0s3TsIPaR96P2Jqc9bH+58Sctp+O6u2BEe73EpRs05x4JPgbM2x1Fvyk2AVkH+mACSKu1YKURsTORPruilejQ== dotingrade@gmail.com
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDlQSoUQ7vl9u655Utt7fnWYk65y5BqjaZopWGmbdBw6+WbEwc8QeV0/GZBiPsESOJnBiu80wyq1DfhzSf7w6M9mnUCOEQnFAjOKkmnBw1jN6CaXxUQ3E6XrD7jvijznxhBJzvxKVafYdcP6nAziODKFqFS14LBnm2M54URa4d6qdl/hTnjPOuT8h8yIOu1NxPzxk+jir5KBWqteiZIT8TUTX/5Q1WiIdoRy2vUn3LllSR79MoZUcjkDIb099y8a8GX7sYPbLq/vcQWImyDsdLWcHDK9uw2aycrZbIp3Nz8g1/M1pU6vtsBnDhGC4vWLHHcNKAxNEFyD+57n8Rq0Vmbvok9ZuKkaz9uuGZnDREBdEgTIhB3t8EkPwxVLZ0qqHXYF8kxxjcmkA4vhe2CZDWZkR5+LNijtizCoEOLJU8UTovDQa4fPLeEeSeLbIZNJvHsCki2X00AyruhET5Gt5MyNQjUReUP0IB/1p56hZ5rQ/Dijs0+WaVkhSwzMYgfjDnrjVb5w4XESr7JjHjyB/a89ux7N6yj30zXNrzF2Xj51YtSHZ3fJaJsbClaVo5sxibGpLS2DavzBdGf0KPEGKchDWlNKgdt5NC8SEydtXZHURuc5/xW+tGrii7C+RsntXaYxxzIIA/RZVVNF+T+/drbFGPL6ZWZp9BPwDjeFQQeKw== dotingrade@gmail.com
 
 Voy a git y en MI USUARIO y opcion settings SSH y GPH keys y creo una nueva clave SSH
 
@@ -66,10 +72,15 @@ cd /ruta/del/repositorio
 git pull origin main
 
 ***************************
-Vamos a instala python y las dependencias:
+Vamos a instalar python y las dependencias:
 
 sudo apt install python3-pip
 pip install python-binance python-dotenv requests
 
 no reconoce python, vamos a decirle que es python3:
 sudo apt update && sudo apt install -y python-is-python3
+***************************
+para quitar tabuladores a espacios
+	
+expand -t 4 testSaldo.py > testSaldo_fixed.py
+mv testSaldo_fixed.py testSaldo.py

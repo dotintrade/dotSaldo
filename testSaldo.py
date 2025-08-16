@@ -18,7 +18,7 @@ def obtener_saldo_en_eur():
     resumen = []
     total_eur = 0.0
 
-	print("Entra en obtener_saldo_en_eur")
+    print("Entra en obtener_saldo_en_eur")
 
     for b in balances:
         asset = b['asset']
@@ -44,12 +44,12 @@ def obtener_saldo_en_eur():
             resumen.append(f"{asset}: {cantidad:.6f} ≈ {valor_eur:.2f} €")
     
     resumen.append(f"\nTOTAL: {total_eur:.2f} €")
-
+    print(f"\nTOTAL: {total_eur:.2f} €\n")
     print("Sale en obtener_saldo_en_eur")
 
     return "\n".join(resumen)
 
 if __name__ == "__main__":
-	print("Antes obtener saldo")
-	print(obtener_saldo_en_eur())
+    print("Antes obtener saldo")
+    mensaje = obtener_saldo_en_eur()
     print("Despues obtener saldo")
