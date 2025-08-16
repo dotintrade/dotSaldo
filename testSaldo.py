@@ -1,4 +1,5 @@
 import os
+import time
 from binance.client import Client
 from dotenv import load_dotenv
 
@@ -7,6 +8,8 @@ load_dotenv()
 
 BINANCE_API_KEY = os.getenv("BINANCE_API_KEY")
 BINANCE_API_SECRET = os.getenv("BINANCE_API_SECRET")
+
+INTERVALO_SEGUNDOS = 10
 
 # Conexión a Binance
 client = Client(BINANCE_API_KEY, BINANCE_API_SECRET)
@@ -50,6 +53,11 @@ def obtener_saldo_en_eur():
     return "\n".join(resumen)
 
 if __name__ == "__main__":
-    print("Antes obtener saldo")
-    mensaje = obtener_saldo_en_eur()
-    print("Despues obtener saldo")
+
+    while True:
+        
+        print("Antes obtener saldo")
+        mensaje = obtener_saldo_en_eur()
+        print("Despues obtener saldo")
+
+        time.sleep(INTERVALO_SEGUNDOS)
