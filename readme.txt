@@ -2,6 +2,7 @@ git add .
 o bien: git add nombre_fichero
 git commit -m "Primera version"
 git push origin main
+
 ****************
 https://www.youtube.com/watch?v=Z4yeRyf8MhM
 ****************
@@ -69,4 +70,9 @@ Vamos a instala python y las dependencias:
 
 sudo apt install python3-pip
 pip install python-binance python-dotenv requests
+
+no reconoce python, vamos a decirle que es python3:
+sudo apt update && sudo apt install -y python-is-python3
+
+
 
