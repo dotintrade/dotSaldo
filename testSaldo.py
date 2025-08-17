@@ -10,6 +10,7 @@ BINANCE_API_KEY = os.getenv("BINANCE_API_KEY")
 BINANCE_API_SECRET = os.getenv("BINANCE_API_SECRET")
 
 INTERVALO_SEGUNDOS = 10
+UMBRAL_EUR = 3800.0
 
 # Conexión a Binance
 client = Client(BINANCE_API_KEY, BINANCE_API_SECRET)
@@ -20,8 +21,6 @@ def obtener_saldo_en_eur():
     balances = client.get_account()['balances']
     resumen = []
     total_eur = 0.0
-
-    print("Entra en obtener_saldo_en_eur")
 
     for b in balances:
         asset = b['asset']
@@ -47,17 +46,18 @@ def obtener_saldo_en_eur():
             resumen.append(f"{asset}: {cantidad:.6f} ≈ {valor_eur:.2f} €")
     
     resumen.append(f"\nTOTAL: {total_eur:.2f} €")
-    print(f"\nTOTAL: {total_eur:.2f} €\n")
-    print("Sale en obtener_saldo_en_eur")
 
-    return "\n".join(resumen)
+    return "\n".join(resumen), total_eur
+
 
 if __name__ == "__main__":
-
     while True:
-        
-        print("Antes obtener saldo")
-        mensaje = obtener_saldo_en_eur()
-        print("Despues obtener saldo")
+        mensaje, total = obtener_saldo_en_eur()
+
+        # Mostrar saldo solo si supera el umbral
+        if total >= UMBRAL_EUR:
+            print(mensaje)
+        else:
+            print(f"Saldo total ({total:.2f} €) por debajo del umbral ({UMBRAL_EUR} €).")
 
         time.sleep(INTERVALO_SEGUNDOS)
