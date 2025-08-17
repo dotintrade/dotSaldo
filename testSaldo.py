@@ -53,12 +53,11 @@ def obtener_saldo_en_eur():
     return "\n".join(resumen), total_eur
 
 def enviar_telegram(mensaje):
-    url = f"https://api.telegram.org/bot{TELEGRAM_TOKEN}/sendMessage"
-    data = {"chat_id": TELEGRAM_CHATID, "text": mensaje}
-    try:
-        requests.post(url, data=data)
-    except Exception as e:
-        print("Error enviando Telegram:", e)
+
+    send_text = 'https://api.telegram.org/bot' + TELEGRAM_TOKEN + '/sendMessage?chat_id=' + TELEGRAM_CHATID + '&parse_mode=Markdown&text=' + mensaje
+    response = requests.get(send_text)
+
+    return response.json()
 
 if __name__ == "__main__":
     
