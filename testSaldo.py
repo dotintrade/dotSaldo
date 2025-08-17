@@ -45,7 +45,7 @@ def obtener_saldo_en_eur():
             total_eur += valor_eur
             resumen.append(f"{asset}: {cantidad:.6f} ≈ {valor_eur:.2f} €")
     
-    resumen.append(f"\nTOTAL: {total_eur:.2f} €")
+    resumen.append(f"\nTOTAL: {total_eur:.2f} €\n")
 
     return "\n".join(resumen), total_eur
 
