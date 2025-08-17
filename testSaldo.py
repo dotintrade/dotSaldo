@@ -1,5 +1,6 @@
 import os
 import time
+import requests
 from binance.client import Client
 from dotenv import load_dotenv
 
@@ -8,6 +9,8 @@ load_dotenv()
 
 BINANCE_API_KEY = os.getenv("BINANCE_API_KEY")
 BINANCE_API_SECRET = os.getenv("BINANCE_API_SECRET")
+TELEGRAM_TOKEN = os.getenv("TELEGRAM_TOKEN")
+TELEGRAM_CHATID = os.getenv("TELEGRAM_CHATID")
 
 INTERVALO_SEGUNDOS = 10
 UMBRAL_EUR = 3800.0
@@ -49,14 +52,23 @@ def obtener_saldo_en_eur():
 
     return "\n".join(resumen), total_eur
 
+def enviar_telegram(mensaje):
+    url = f"https://api.telegram.org/bot{TELEGRAM_TOKEN}/sendMessage"
+    data = {"chat_id": TELEGRAM_CHATID, "text": mensaje}
+    try:
+        requests.post(url, data=data)
+    except Exception as e:
+        print("Error enviando Telegram:", e)
 
 if __name__ == "__main__":
+    
     while True:
         mensaje, total = obtener_saldo_en_eur()
 
         # Mostrar saldo solo si supera el umbral
         if total >= UMBRAL_EUR:
             print(mensaje)
+            enviar_telegram(mensaje)
         else:
             print(f"Saldo total ({total:.2f} €) por debajo del umbral ({UMBRAL_EUR} €).")
 
