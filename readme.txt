@@ -84,3 +84,8 @@ para quitar tabuladores a espacios
 	
 expand -t 4 testSaldo.py > testSaldo_fixed.py
 mv testSaldo_fixed.py testSaldo.py
+
+****************************
+Para descargargar lo que tengo en github al repo en el servidor
+
+git pull git@github.com:dotintrade/dotSaldo.git
